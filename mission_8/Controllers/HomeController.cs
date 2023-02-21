@@ -11,11 +11,11 @@ namespace mission_8.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private TaskApplicationContext TaskContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(TaskApplicationContext Task)
         {
-            _logger = logger;
+            TaskContext = Task;
         }
 
         public IActionResult Index()
@@ -23,15 +23,28 @@ namespace mission_8.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Add(ApplicationResponse ar)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (ModelState.IsValid)
+            {
+                TaskContext.Add(ar);
+                TaskContext.SaveChanges();
+
+                return RedirectToAction("Index", ar);
+            }
+            else // If Invalid
+            {
+
+                return View(ar);
+            }
+
         }
     }
 }
