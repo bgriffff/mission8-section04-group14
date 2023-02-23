@@ -18,6 +18,8 @@ namespace mission_8.Models
         [Required]
         public int Quadrant { get; set; }
         public string Category { get; set; }
+
+        [Required]
         public int CategoryId { get; set; }
         public bool Completed { get; set; }
     }
