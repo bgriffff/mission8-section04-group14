@@ -17,6 +17,7 @@ namespace mission_8.Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<TaskResponse>().HasData();
+        }
     }
 }
 
