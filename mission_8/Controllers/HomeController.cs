@@ -11,9 +11,9 @@ namespace mission_8.Controllers
 {
     public class HomeController : Controller
     {
-        private TaskApplicationContext TaskContext { get; set; }
+        private TaskInfoContext TaskContext { get; set; }
 
-        public HomeController(TaskApplicationContext Task)
+        public HomeController(TaskInfoContext Task)
         {
             TaskContext = Task;
         }
@@ -30,7 +30,7 @@ namespace mission_8.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(ApplicationResponse ar)
+        public IActionResult Add(TaskResponse ar)
         {
             if (ModelState.IsValid)
             {
