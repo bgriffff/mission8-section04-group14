@@ -34,8 +34,8 @@ namespace mission_8.Controllers
         {
             if (ModelState.IsValid)
             {
-                TaskContext.Add(ar);
-                TaskContext.SaveChanges();
+                //TaskContext.Add(ar);
+                //TaskContext.SaveChanges();
 
                 return RedirectToAction("Index", ar);
             }
