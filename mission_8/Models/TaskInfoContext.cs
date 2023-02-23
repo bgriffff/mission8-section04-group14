@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
+
 
 namespace mission_8.Models
 {
-    public class TaskInfoContext : DbContext
+    public class TaskInfoContext: DbContext
     {
         public TaskInfoContext(DbContextOptions<TaskInfoContext> options) : base(options)
         {
@@ -16,7 +17,7 @@ namespace mission_8.Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<TaskResponse>().HasData();
+            //mb.Entity<TaskResponse>().HasData();
         }
     }
 }
