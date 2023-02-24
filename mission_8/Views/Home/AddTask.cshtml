@@ -1,8 +1,11 @@
 ﻿@{
-    @ViewData["Title"] = "Add a Task";
+    ViewData["Title"] = "Add a Task";
 }
 
-<h2>Add a Task</h2><br />
+@model TaskResponse
+
+<h2>Add a Task</h2>
+<br />
 
 <form method="post">
 
@@ -15,7 +18,7 @@
     <input asp-for="DueDate" />
 
     <label asp-for="Quadrant">Quadrant</label>
-    <select>
+    <select asp-for="Quadrant">
         <option value="Q1">Quadrant 1</option>
         <option value="Q2">Quadrant 2</option>
         <option value="Q3">Quadrant 3</option>
@@ -23,7 +26,7 @@
     </select><br />
 
     <label asp-for="Category">Category</label>
-    <input asp-for="Category"/><br />
+    <input asp-for="Category" /><br />
 
     <label asp-for="Completed">Completed?</label>
     <select asp-for="Completed">

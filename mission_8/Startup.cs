@@ -26,9 +26,10 @@ namespace mission_8
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<TaskInfoContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:TaskInfo"]);
+                options.UseSqlite(Configuration["ConnectionStrings:TaskConnection"]);
             });
         }
 

@@ -16,11 +16,13 @@ namespace mission_8.Models
         public string DueDate { get; set; }
 
         [Required]
-        public int Quadrant { get; set; }
+        public string Quadrant { get; set; }
+
         public string Category { get; set; }
 
-        [Required]
-        public int CategoryId { get; set; }
+        //[Required]
+        //public int CategoryId { get; set; }
+
         public bool Completed { get; set; }
     }
 }

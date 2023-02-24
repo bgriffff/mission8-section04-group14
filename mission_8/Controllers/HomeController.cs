@@ -24,18 +24,18 @@ namespace mission_8.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult AddTask()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(TaskResponse ar)
+        public IActionResult AddTask(TaskResponse ar)
         {
             if (ModelState.IsValid)
             {
-                //TaskContext.Add(ar);
-                //TaskContext.SaveChanges();
+                TaskContext.Add(ar);
+                TaskContext.SaveChanges();
 
                 return RedirectToAction("Index", ar);
             }
