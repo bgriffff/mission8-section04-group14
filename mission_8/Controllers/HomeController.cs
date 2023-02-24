@@ -20,6 +20,7 @@ namespace mission_8.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -41,10 +42,76 @@ namespace mission_8.Controllers
             }
             else // If Invalid
             {
-
+                //ViewBag.Categories = TaskContext.Categories.ToList();
                 return View(ar);
             }
 
+        }
+
+
+        public IActionResult TaskList()
+        {
+            var application = TaskContext.Responses
+                //.Include(x => x.Category)
+                .ToList();
+
+            return View(application);
+        }
+
+
+        [HttpGet]
+        public IActionResult EditTask(int taskid)
+        {
+            //ViewBag.Categories = TaskContext.Categories.ToList();
+
+            //find the single record
+            var task = TaskContext.Responses.Single(x => x.TaskId == taskid);
+
+            return View("AddTask", task);
+        }
+
+        [HttpPost]
+        public IActionResult EditTask(TaskResponse edit)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskContext.Update(edit);
+                TaskContext.SaveChanges();
+
+                // need to send them to the action. not the view
+                return RedirectToAction("TaskList");
+            }
+            else
+            {
+                //ViewBag.Categories = TaskContext.Categories.ToList();
+                return View("AddTask", edit);
+            }
+
+        }
+
+        //Delete Movies
+        [HttpGet]
+        public IActionResult DeleteTask(int taskid)
+        {
+            //ViewBag.Categories = TaskContext.Categories.ToList();
+
+            //find the single record
+            var task = TaskContext.Responses.Single(x => x.TaskId == taskid);
+
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTask(TaskResponse delete, int taskid)
+        {
+
+            var task = TaskContext.Responses.Single(x => x.TaskId == taskid);
+            TaskContext.Remove(delete);
+            TaskContext.SaveChanges();
+
+            // need to send them to the action. not the view
+            return RedirectToAction("TaskList");
         }
     }
 }

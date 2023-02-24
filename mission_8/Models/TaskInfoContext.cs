@@ -13,7 +13,7 @@ namespace mission_8.Models
         {
 
         }
-        public DbSet<TaskResponse> responses { get; set; }
+        public DbSet<TaskResponse> Responses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
