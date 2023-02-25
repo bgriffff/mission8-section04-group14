@@ -1,46 +1,52 @@
 ﻿@{
     ViewData["Title"] = "Add a Task";
 }
-
 @model TaskResponse
-
-<h2>Add a Task</h2>
+<h2>Add a Task by completeing the form below!</h2>
 <br />
+<div>
+    <p>As you create your task, think how you would classify that task. Place each task in one of 4 Quadrants: </p>
+    <ul>Quadrant 1: The task is <b>URGENT</b> and <b>IMPORTANT</b>.</ul>
+    <ul>Quadrant 2: The task is <b>NOT URGENT</b> but still <b>IMPORTANT</b>.</ul>
+    <ul>Quadrant 3: The task is <b>URGENT</b> but <b>NOT IMPORTANT</b>.</ul>
+    <ul>Quadrant 4: The task is <b>NOT URGENT</b> and <b>NOT IMPORTANT</b>.</ul>
+</div>
+<br />
+<div>
+    <form method="post">
+        <fieldset>
+            <legend>Add a Task</legend>
+            <div asp-validation-summary="All"></div>
+            <label asp-for="Task">Task</label>
+            <textarea asp-for="Task">Task</textarea><br />
+            <label asp-for="DueDate">Due Date</label>
+            <input asp-for="DueDate" /><br />
+            <label asp-for="Quadrant">Quadrant</label>
+            <select asp-for="Quadrant">
+                <option value="Q1">Quadrant 1</option>
+                <option value="Q2">Quadrant 2</option>
+                <option value="Q3">Quadrant 3</option>
+                <option value="Q4">Quadrant 4</option>
+            </select><br />
 
-<form method="post">
+            <label asp-for="CategoryId">Category: </label>
+            <select asp-for="CategoryId">
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
 
-    <div asp-validation-summary="All"></div>
+                }
+            </select>
+            <br />
 
-    <label asp-for="Task">Task</label>
-    <textarea asp-for="Task">Task</textarea><br />
+            <label asp-for="Completed">Completed?</label>
+            <input type="checkbox" asp-for="Completed" value="true"><br />
+            @*<select asp-for="Completed">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select><br />*@
 
-    <label asp-for="DueDate">Due Date</label>
-    <input asp-for="DueDate" />
-
-    <label asp-for="Quadrant">Quadrant</label>
-    <select asp-for="Quadrant">
-        <option value="Q1">Quadrant 1</option>
-        <option value="Q2">Quadrant 2</option>
-        <option value="Q3">Quadrant 3</option>
-        <option value="Q4">Quadrant 4</option>
-    </select><br />
-
-    <label asp-for="CategoryId">Category: </label>
-    <select asp-for="CategoryId">
-        @foreach (Category c in ViewBag.Categories)
-        {
-            <option value="@c.CategoryId">@c.CategoryName</option>
-
-        }
-    </select>
-    <br />
-
-    <label asp-for="Completed">Completed?</label>
-    <input type="checkbox" asp-for="Completed" value="true"><br />
-    @*<select asp-for="Completed">
-            <option value="true">True</option>
-            <option value="false">False</option>
-        </select><br />*@
-
-    <button type="submit">Create Task</button>
-</form>
+            <button type="submit">Create Task</button>
+        </fieldset>
+    </form>
+</div>

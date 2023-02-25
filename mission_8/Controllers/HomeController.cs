@@ -106,10 +106,9 @@ namespace mission_8.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteTask(TaskResponse delete, int taskid)
+        public IActionResult DeleteTask(TaskResponse delete)
         {
 
-            var task = TaskContext.Responses.Single(x => x.TaskId == taskid);
             TaskContext.Remove(delete);
             TaskContext.SaveChanges();
 

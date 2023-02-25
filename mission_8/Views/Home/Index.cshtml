@@ -1,8 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to your Task Manager!</h1><br />
+    <h2>
+        According to Steven Covey's “The 7 Habits of Highly Effective People”, breaking To-Do List items into
+        Four Quandrants is the best way to manage your time EFFECTIVELY.
+    </h2><br />
+    <h3>Click <a asp-controller="Home" asp-action="AddTask">here</a> to get started!</h3><br />
+    <img src="~/img/quad.jpeg" width="500" />
 </div>
