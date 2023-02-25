@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                     @foreach (var x in Model)
-                    {                       
+                    {
                         @if (x.Quadrant == "Q1")
                         {
                             <tr>
@@ -46,7 +46,7 @@
                                 <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-taskid="@x.TaskId">Delete</a></td>
                             </tr>
                         }
-                        
+
                     }
                 </tbody>
             </table>
@@ -116,35 +116,35 @@
             </table>
         </div>
         @*Quad 4 Table*@
-    <div class="col-5">
-        <table class="table table-bordered table-striped">
+        <div class="col-5">
+            <table class="table table-bordered table-striped">
 
-            <thead class="text-center font-weight-bold">
-                <tr>
-                    <td>Task</td>
-                    <td>Due Date</td>
-                    <td>Category</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var x in Model)
-                {
-                    @if (x.Quadrant == "Q4")
+                <thead class="text-center font-weight-bold">
+                    <tr>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
                     {
-                        <tr>
-                            <td>@x.Task</td>
-                            <td>@x.DueDate</td>
-                            <td>@x.Category</td>
+                        @if (x.Quadrant == "Q4")
+                        {
+                            <tr>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+                                <td>@x.Category</td>
 
-                            <td><a asp-controller="Home" asp-action="EditTask" asp-route-taskid="@x.TaskId">Edit</a></td>
-                            <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-taskid="@x.TaskId">Delete</a></td>
-                        </tr>
+                                <td><a asp-controller="Home" asp-action="EditTask" asp-route-taskid="@x.TaskId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-taskid="@x.TaskId">Delete</a></td>
+                            </tr>
+                        }
+
                     }
-
-                }
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
