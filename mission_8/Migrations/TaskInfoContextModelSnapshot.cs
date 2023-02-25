@@ -40,7 +40,7 @@ namespace mission_8.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.ToTable("responses");
+                    b.ToTable("Responses");
                 });
 #pragma warning restore 612, 618
         }

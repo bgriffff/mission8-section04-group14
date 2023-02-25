@@ -8,7 +8,7 @@ using mission_8.Models;
 namespace mission_8.Migrations
 {
     [DbContext(typeof(TaskInfoContext))]
-    [Migration("20230224021045_Initial")]
+    [Migration("20230225024509_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,7 @@ namespace mission_8.Migrations
 
                     b.HasKey("TaskId");
 
-                    b.ToTable("responses");
+                    b.ToTable("Responses");
                 });
 #pragma warning restore 612, 618
         }

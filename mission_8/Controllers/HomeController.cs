@@ -38,7 +38,7 @@ namespace mission_8.Controllers
                 TaskContext.Add(ar);
                 TaskContext.SaveChanges();
 
-                return RedirectToAction("Index", ar);
+                return RedirectToAction("TaskList", ar);
             }
             else // If Invalid
             {
@@ -53,6 +53,7 @@ namespace mission_8.Controllers
         {
             var application = TaskContext.Responses
                 //.Include(x => x.Category)
+                .Where(x => x.Completed == false)
                 .ToList();
 
             return View(application);

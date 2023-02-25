@@ -7,7 +7,7 @@ namespace mission_8.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "responses",
+                name: "Responses",
                 columns: table => new
                 {
                     TaskId = table.Column<int>(nullable: false)
@@ -20,14 +20,14 @@ namespace mission_8.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_responses", x => x.TaskId);
+                    table.PrimaryKey("PK_Responses", x => x.TaskId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "responses");
+                name: "Responses");
         }
     }
 }
