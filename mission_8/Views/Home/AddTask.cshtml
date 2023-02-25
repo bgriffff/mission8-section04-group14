@@ -25,15 +25,22 @@
         <option value="Q4">Quadrant 4</option>
     </select><br />
 
-    <label asp-for="Category">Category</label>
-    <input asp-for="Category" /><br />
+    <label asp-for="CategoryId">Category: </label>
+    <select asp-for="CategoryId">
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+
+        }
+    </select>
+    <br />
 
     <label asp-for="Completed">Completed?</label>
     <input type="checkbox" asp-for="Completed" value="true"><br />
     @*<select asp-for="Completed">
-        <option value="true">True</option>
-        <option value="false">False</option>
-    </select><br />*@
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select><br />*@
 
     <button type="submit">Create Task</button>
 </form>

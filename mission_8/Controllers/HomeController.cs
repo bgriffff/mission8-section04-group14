@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mission_8.Models;
 using System;
@@ -27,6 +28,7 @@ namespace mission_8.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
+            ViewBag.Categories = TaskContext.Categories.ToList();
             return View();
         }
 
@@ -42,7 +44,7 @@ namespace mission_8.Controllers
             }
             else // If Invalid
             {
-                //ViewBag.Categories = TaskContext.Categories.ToList();
+                ViewBag.Categories = TaskContext.Categories.ToList();
                 return View(ar);
             }
 
@@ -52,7 +54,7 @@ namespace mission_8.Controllers
         public IActionResult TaskList()
         {
             var application = TaskContext.Responses
-                //.Include(x => x.Category)
+                .Include(x => x.Category)
                 .Where(x => x.Completed == false)
                 .ToList();
 
@@ -63,7 +65,7 @@ namespace mission_8.Controllers
         [HttpGet]
         public IActionResult EditTask(int taskid)
         {
-            //ViewBag.Categories = TaskContext.Categories.ToList();
+            ViewBag.Categories = TaskContext.Categories.ToList();
 
             //find the single record
             var task = TaskContext.Responses.Single(x => x.TaskId == taskid);
@@ -84,7 +86,7 @@ namespace mission_8.Controllers
             }
             else
             {
-                //ViewBag.Categories = TaskContext.Categories.ToList();
+                ViewBag.Categories = TaskContext.Categories.ToList();
                 return View("AddTask", edit);
             }
 
@@ -94,7 +96,7 @@ namespace mission_8.Controllers
         [HttpGet]
         public IActionResult DeleteTask(int taskid)
         {
-            //ViewBag.Categories = TaskContext.Categories.ToList();
+            ViewBag.Categories = TaskContext.Categories.ToList();
 
             //find the single record
             var task = TaskContext.Responses.Single(x => x.TaskId == taskid);

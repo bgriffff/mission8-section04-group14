@@ -18,11 +18,13 @@ namespace mission_8.Models
         [Required]
         public string Quadrant { get; set; }
 
-        public string Category { get; set; }
-
-        //[Required]
-        //public int CategoryId { get; set; }
 
         public bool Completed { get; set; }
+
+        //Foreign Key
+        public int CategoryId { get; set; }
+
+        //This creates the relationship from this table to the Category table
+        public Category Category { get; set; }
     }
 }
