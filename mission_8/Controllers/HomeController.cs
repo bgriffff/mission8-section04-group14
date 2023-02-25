@@ -48,7 +48,7 @@ namespace mission_8.Controllers
 
         }
 
-
+        [HttpGet]
         public IActionResult TaskList()
         {
             var application = TaskContext.Responses
