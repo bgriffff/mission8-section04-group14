@@ -1,0 +1,150 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "QUADS";
+}
+@model List<TaskResponse>
+
+<div class="container">
+    <div class="row">
+        @*Title*@
+        <div class="col text-center">Time Management Matrix</div>
+    </div>
+    <div class="row">
+        @*Empty*@
+        <div class="col-2"></div>
+        @*Column Titles*@
+        <div class="col-5 border">Urgent</div>
+        <div class="col-5 border">Not Urgent</div>
+    </div>
+    <div class="row">
+        @*Title*@
+        <div class="col-2 border">Important</div>
+        @*Quad 1 Table*@
+        <div class="col-5">
+            <table class="table table-bordered table-striped">
+
+                <thead class="text-center font-weight-bold">
+                    <tr>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {                       
+                        @if (x.Quadrant == "Q1")
+                        {
+                            <tr>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+                                <td>@x.Category</td>
+
+                                <td><a asp-controller="Home" asp-action="EditTask" asp-route-movieid="@x.TaskId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="DeleteTask" asp-route-movieid="@x.TaskId">Delete</a></td>
+                            </tr>
+                        }
+                        
+                    }
+                </tbody>
+            </table>
+        </div>
+        @*Quad 2 Table*@
+        <div class="col-5">
+            <table class="table table-bordered table-striped">
+
+                <thead class="text-center font-weight-bold">
+                    <tr>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        @if (x.Quadrant == "Q2")
+                        {
+                            <tr>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+                                <td>@x.Category</td>
+
+                                <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskId">Delete</a></td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        @*Title*@
+        <div class="col-2 border">Not Important</div>
+        @*Quad 3 Table*@
+        <div class="col-5">
+            <table class="table table-bordered table-striped">
+
+                <thead class="text-center font-weight-bold">
+                    <tr>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Category</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        @if (x.Quadrant == "Q3")
+                        {
+                            <tr>
+                                <td>@x.Task</td>
+                                <td>@x.DueDate</td>
+                                <td>@x.Category</td>
+
+                                <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskId">Delete</a></td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        @*Quad 4 Table*@
+    <div class="col-5">
+        <table class="table table-bordered table-striped">
+
+            <thead class="text-center font-weight-bold">
+                <tr>
+                    <td>Task</td>
+                    <td>Due Date</td>
+                    <td>Category</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    @if (x.Quadrant == "Q4")
+                    {
+                        <tr>
+                            <td>@x.Task</td>
+                            <td>@x.DueDate</td>
+                            <td>@x.Category</td>
+
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.TaskId">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.TaskId">Delete</a></td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+
